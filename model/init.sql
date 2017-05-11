@@ -1,57 +1,73 @@
 CREATE DATABASE projetPHP;
 USE projetPHP;
 
-CREATE TABLE flow
+CREATE TABLE IF NOT EXISTS task
 (
-    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
-    exec_time INT,
-    last_exec TIME
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  script VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE host
+CREATE TABLE IF NOT EXISTS host
 (
-    name VARCHAR(100) PRIMARY KEY NOT NULL,
-    ip VARCHAR(100)
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  ip VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE user
+CREATE TABLE IF NOT EXISTS user
 (
-    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    login VARCHAR(100),
-    password VARCHAR(255),
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  login VARCHAR(100) NOT NULL,
+  password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE task
+CREATE TABLE IF NOT EXISTS flow
 (
-    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    script VARCHAR(100)
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  exec_time INT NOT NULL,
+  userId INT NOT NULL,
+  CONSTRAINT flow_userid_fk FOREIGN KEY (userId) REFERENCES user(id)
 );
 
-CREATE TABLE taskflow
+CREATE TABLE IF NOT EXISTS taskflow
 (
-    id_task INT FOREIGN KEY REFERENCES task(id),
-    id_flow INT FOREIGN KEY REFERENCES flow(id)
+  taskId INT NOT NULL,
+  flowId INT NOT NULL,
+  ordertask INT NOT NULL,
+  CONSTRAINT taskflow_taskid_fk FOREIGN KEY (taskId) REFERENCES task(id),
+  CONSTRAINT taskflow_flowid_fk FOREIGN KEY (flowId) REFERENCES flow(id)
 );
 
-
-CREATE TABLE flowhost
+CREATE TABLE IF NOT EXISTS flowhost
 (
-	id_flow INT FOREIGN KEY REFERENCES flow(id),
-	hostname INT FOREIGN KEY REFERENCES host(name)
+  flowId INT NOT NULL,
+	hostId INT NOT NULL,
+  CONSTRAINT flowhost_flowid_fk FOREIGN KEY (flowId) REFERENCES flow(id),
+  CONSTRAINT flowhost_hostid_fk FOREIGN KEY (hostId) REFERENCES host(id)
 );
 
-CREATE TABLE flowuser
+CREATE TABLE IF NOT EXISTS flowuser
 (
-	id_flow INT FOREIGN KEY REFERENCES flow(id),
-	userid INT FOREIGN KEY REFERENCES user(id)
+	flowId INT NOT NULL,
+	userId INT NOT NULL,
+  CONSTRAINT flowuser_flowid_fk FOREIGN KEY (flowId) REFERENCES flow(id),
+  CONSTRAINT flowuser_userid_fk FOREIGN KEY (userId) REFERENCES user(id)
 );
 
+CREATE TABLE IF NOT EXISTS taskexecution
+(
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	taskId INT NOT NULL,
+	starttime DATETIME NOT NULL,
+	status INT NOT NULL
+);
 
-CREATE TABLE execution
-(	
-	exec_id INT PRIMARY KEY NOT NULL,
-	id_task INT FOREIGN KEY REFERENCES task(id),
-	exec_date DATE,
-	status INT
-
+CREATE TABLE IF NOT EXISTS flowexecution
+(
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  flowId INT NOT NULL,
+  starttime DATETIME NOT NULL,
+  status INT NOT NULL,
+  CONSTRAINT flowexecution_flowid_fk FOREIGN KEY (flowId) REFERENCES flow(id)
 );
