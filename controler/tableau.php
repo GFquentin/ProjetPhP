@@ -22,7 +22,10 @@
     </thead>
     <tbody>
     <?php
-      echo "<tr><td>Default</td><td>Defaultson</td><td>def@somemail.com</td></tr>";
+    for ($i=0; $i < 50; $i++) { 
+            echo "<tr><td>Default</td><td>Defaultson</td><td>def@somemail.com</td></tr>";
+    }
+
     ?>
     </tbody>
   </table>
