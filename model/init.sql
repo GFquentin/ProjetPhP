@@ -25,9 +25,7 @@ CREATE TABLE IF NOT EXISTS flow
 (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
-  exec_time INT NOT NULL,
-  userId INT NOT NULL,
-  CONSTRAINT flow_userid_fk FOREIGN KEY (userId) REFERENCES user(id)
+  exec_time INT NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
 
 CREATE TABLE IF NOT EXISTS taskflow
@@ -42,25 +40,26 @@ CREATE TABLE IF NOT EXISTS taskflow
 CREATE TABLE IF NOT EXISTS flowhost
 (
   flowId INT NOT NULL,
-	hostId INT NOT NULL,
+  hostId INT NOT NULL,
   CONSTRAINT flowhost_flowid_fk FOREIGN KEY (flowId) REFERENCES flow(id),
   CONSTRAINT flowhost_hostid_fk FOREIGN KEY (hostId) REFERENCES host(id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS flowuser
 (
-	flowId INT NOT NULL,
-	userId INT NOT NULL,
+  flowId INT NOT NULL,
+  userId INT NOT NULL,
   CONSTRAINT flowuser_flowid_fk FOREIGN KEY (flowId) REFERENCES flow(id),
   CONSTRAINT flowuser_userid_fk FOREIGN KEY (userId) REFERENCES user(id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS taskexecution
 (
-	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	taskId INT NOT NULL,
-	starttime DATETIME NOT NULL,
-	status INT NOT NULL
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  taskId INT NOT NULL,
+  starttime DATETIME NOT NULL,
+  status INT NOT NULL,
+  CONSTRAINT taskexecution_taskid_fk FOREIGN KEY (taskId) REFERENCES task(id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
 
 CREATE TABLE IF NOT EXISTS flowexecution
