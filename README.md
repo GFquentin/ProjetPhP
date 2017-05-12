@@ -6,5 +6,5 @@ Création d'un outil de scheduling
 
 
 ![GitHub Logo](/db-diagram.png)
-Format: ![Alt Text](url)
+
 
