@@ -1,0 +1,20 @@
+<!--
+	Création du formulaire de création de tâche
+-->
+<form action="../controller/" method="post">
+    <div class="form-group">
+    	<label for="name_task">Nom de la tâche : </label>
+        <input type="text" class="form-control" id="name_task"><BR>
+    </div>    
+    <!--
+		Création du formulaire d'upload script
+    -->
+    <div class="form-control">
+        <form action="../controller/uploadScript.php" methode="post">
+        	Sélectionner le script de votre tâche :
+        	<input type="file" name="fileToUpload" class="form-control" id="fileToUpload">
+        	<input type="submit" value="Upload Script" class="form-control" name="submit">
+        </form>
+    </div>
+	<button type="submit" value="Envoyer" class="form-control btn btn-primary col-md-3">Envoyer</button> <button type="reset" value="Effacer" class="form-control btn btn-warning col-md-3">Effacer</button>
+</form>
