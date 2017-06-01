@@ -1,5 +1,5 @@
 <!-- JS permettant de créer x liste de tâche qui viendront remplir le flow en cours de création -->
-<script>
+<!-- <script>
     $("#btn-addSelect").click(function(){
         var orderTask = 2;
         var divSelect = document.getElementById("");
@@ -9,14 +9,14 @@
         document.getElementById("").value = value;
         var orderTask++;
     });
-</script>
+</script> -->
 
 <!--
 	Création du formulaire de création du flow
 -->
 <div class="row">
     <div class="form-group col-md-12">
-        <form action="" method="post">
+        <form action="http://localhost/ProjetPhP/controler/createFlow.php" method="post">
             <div class="form-group">
             	<label for="name_flow">Nom du flow : </label>
                 <input type="text" class="form-control col-md-5" id="name_task"><BR>
