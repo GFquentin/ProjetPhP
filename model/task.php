@@ -24,5 +24,17 @@ class Task
 
     //<editor-fold desc="Functions">
     //</editor-fold>
+
+    //<editor-fold desc="Getters & Setters">
+    public function getId()
+    {
+
+    }
+
+    public function getScript()
+    {
+
+    }
+    //</editor-fold>
 }
 ?>
