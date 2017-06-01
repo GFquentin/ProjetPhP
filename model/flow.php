@@ -6,20 +6,20 @@ class Flow
     private $id;
     private $name;
     private $interval;
-    private $userId;
-    private $tasklist;
-    private $hostlist;
-    private $userlist;
+    private $tasklist;      // Array: index=taskId; Task (class) - order by taskflow.ordertask
+    private $hostlist;      // Array: index=hostId; Host (class)
+    private $userlist;      // Array: index=userId; User (class)
     //</editor-fold>
 
     //<editor-fold desc="Constructor">
-    public function __construct($id, $name, $interval, $userId, $tasklist=null, $hostlist=null, $userlist=null)
+    public function __construct($id, $name, $interval, $tasklist=null, $hostlist=null, $userlist=null)
     {
         $this->id=$id;
         $this->name=$name;
         $this->interval=$interval;
-        $this->userId=$userId;
         $this->tasklist=$tasklist;
+        $this->hostlist=$hostlist;
+        $this->userlist=$userlist;
     }
     //</editor-fold>
 
@@ -31,54 +31,84 @@ class Flow
 
     public function addTask($taskId)
     {
+        if(!$this->hasTask($taskId))
+        {
 
+        }
     }
 
     public function removeTask($taskId)
     {
+        if($this->hasTask($taskId))
+        {
 
+        }
     }
 
     public function addHost($hostId)
     {
+        if(!$this->hasTask($hostId))
+        {
 
+        }
     }
 
     public function removeHost($hostId)
     {
+        if($this->hasTask($hostId))
+        {
 
+        }
     }
 
     public function addUser($userId)
     {
+        if(!$this->hasTask($userId))
+        {
 
+        }
     }
 
     public function removeUser($userId)
+    {
+        if($this->hasTask($userId))
+        {
+
+        }
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="Functions">
+    public function hasTask($taskId)
+    {
+
+    }
+
+    public function hasHost($hostId)
+    {
+
+    }
+
+    public function hasUser($userId)
     {
 
     }
     //</editor-fold>
 
-    //<editor-fold desc="Functions">
-    private function getTaskList()
+    //<editor-fold desc="Getters & Setters">
+    public function getTaskList()
     {
-
+        return $this->tasklist;
     }
 
-    private function getHostList()
+    public function getHostList()
     {
-
+        return $this->hostlist;
     }
 
-    private function getUserList()
+    public function getUserList()
     {
-
-    }
-
-    public function hasTask($taskId)
-    {
-
+        return $this->userlist;
     }
     //</editor-fold>
 }
