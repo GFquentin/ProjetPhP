@@ -24,11 +24,25 @@
             <div class="form-group">
 <?php
         	$dataTask = $_POST['tasks'];
-            $dataTask = array('ssh', 'ls', 'tar', 'rm', 'poweroff', 'reboot');
+            	$dataTask = array('ssh', 'ls', 'tar', 'rm', 'poweroff', 'reboot');	
+?>
+                <label for="select_task">Sélection de la tâche 1</label>
+        	<select class="form-control col-md-8" name="select_task" id="select_task" type="select">
+<?php
+                        foreach ($dataTask as $key => $value) {
+                            echo '<option value="'. $value .'">'. $value .'</option>';
+                        }
+?>
+               	</select>
+             </div>
+	     <div class="form-group">
+<?php
+        	$dataTask = $_POST['tasks'];
+            	$dataTask = array('ssh', 'ls', 'tar', 'rm', 'poweroff', 'reboot');
         		
 ?>
-                    <label for="select_task">Sélection de la tâche 1</label>
-        		    <select class="form-control col-md-8" name="select_task" id="select_task" type="select">
+                    	<label for="select_task2">Sélection de la tâche 1</label>
+        		<select class="form-control col-md-8" name="select_task2" id="select_task2" type="select">
 
 <?php
                         foreach ($dataTask as $key => $value) {
@@ -37,8 +51,8 @@
 
                         }
 ?>
-                    </select>
-            </div>
+                    	</select>
+               </div>
         	<button type="submit" value="Envoyer" class="form-control btn btn-primary col-md-3">Envoyer</button> <button type="reset" value="Effacer" class="form-control btn btn-warning col-md-3">Effacer</button>
         </form>
     </div>
