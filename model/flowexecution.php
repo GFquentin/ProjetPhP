@@ -3,22 +3,23 @@
 class FlowExecution extends Execution
 {
     //<editor-fold desc="Properties">
-    private $flowId;
+    private $flow;
     //</editor-fold>
 
     //<editor-fold desc="Constructor">
-    public function __construct($id, $flowId, $starttime, $status)
+    public function __construct($flow)
     {
-        $this->id=$id;
-        $this->flowId=$flowId;
-        $this->starttime=$starttime;
-        $this->status=$status;
+        $this->flow=$flow;
     }
     //</editor-fold>
 
     //<editor-fold desc="Methods">
-    protected function run()
+    public function run()
     {
+        $this->starttime=date('Y-m-d H:i:s');
+        $this->status=$this->flow->runTasks();
+
+        return $this->status;
     }
     //</editor-fold>
 
