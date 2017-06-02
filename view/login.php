@@ -1,67 +1,18 @@
 <?php
-  // Definition des constantes et variables
-  define('LOGIN','toto');
-  define('PASSWORD','tata');
-  $errorMessage = '';
- 
-  // Test de l'envoi du formulaire
-  if(!empty($_POST)) 
-  {
-    // Les identifiants sont transmis ?
-    if(!empty($_POST['login']) && !empty($_POST['password'])) 
-    {
-      // Sont-ils les mêmes que les constantes ?
-      if($_POST['login'] !== LOGIN) 
-      {
-        $errorMessage = 'Mauvais login ou password';
-      }
-        elseif($_POST['password'] !== PASSWORD) 
-      {  
-        $errorMessage = 'Mauvais login ou password';
-      }
-        else
-      {
-        // On ouvre la session
-        session_start();
-        // On enregistre le login en session
-        $_SESSION['login'] = LOGIN;
-        // On redirige vers le fichier admin.php
-        header('Location: /ProjetPhP/ProjetPhP/controler/tableau.php');
-        exit();
-      }
-    }
-      else
-    {
-      $errorMessage = 'Veuillez inscrire vos identifiants svp !';
-    }
-  }
+session_start();
+if(isset($_SESSION['badlogin'])){
+if($_SESSION['badlogin'] == 1){
+echo "Identifiant non valide, veuillez verifier vos logins ";
+}
+}
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
-  <head>
-    <title>Formulaire d'authentification</title>
-  </head>
-  <body>
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-      <fieldset>
-        <legend>Identifiez-vous</legend>
-        <?php
-          // Rencontre-t-on une erreur ?
-          if(!empty($errorMessage)) 
-          {
-            echo '<p>', htmlspecialchars($errorMessage) ,'</p>';
-          }
-        ?>
-       <p>
-          <label for="login">Login :</label> 
-          <input type="text" name="login" id="login" value="" />
-        </p>
-        <p>
-          <label for="password">Password :</label> 
-          <input type="password" name="password" id="password" value="" /> 
-          <input type="submit" name="submit" value="Connexion" />
-        </p>
-      </fieldset>
-    </form>
-  </body>
-</html>
+
+ 
+      <form action="/ProjetPhP/controler/logs.php" method="post">                 
+<label for="login"><strong>Identifiant</strong></label>
+<input type="text" name="identifiant" id="identifiant"/>
+<label for="pass"><strong>Mot de passe</strong></label>
+<input type="password" name="motdepass" id="motdepass"/>
+<input type="submit" name="connexion" value="Se connecter"/>
+</form>
+ <form action="disconnect.php" method="post"><input type="submit" name="raz" value="Raz">  </form>
