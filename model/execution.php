@@ -3,7 +3,6 @@
 abstract class Execution
 {
     //<editor-fold desc="Properties">
-    protected $id;
     protected $starttime;
     protected $status = null;
     //</editor-fold>
@@ -12,7 +11,7 @@ abstract class Execution
     //</editor-fold>
 
     //<editor-fold desc="Methods">
-    abstract protected function run();
+    abstract public function run();
     //</editor-fold>
 
     //<editor-fold desc="Functions">
@@ -23,17 +22,17 @@ abstract class Execution
     //</editor-fold>
 
     //<editor-fold desc="Getters & Setters">
-    protected function getId()
+    public function getId()
     {
         return $this->id;
     }
 
-    protected function getStarttime()
+    public function getStarttime()
     {
         return $this->starttime;
     }
 
-    protected function getStatus()
+    public function getStatus()
     {
         return $this->status;
     }
