@@ -15,4 +15,4 @@ echo "Identifiant non valide, veuillez verifier vos logins ";
 <input type="password" name="motdepass" id="motdepass"/>
 <input type="submit" name="connexion" value="Se connecter"/>
 </form>
- <form action="disconnect.php" method="post"><input type="submit" name="raz" value="Raz">  </form>
+ <form action="/ProjetPhP/controler/disconnect.php" method="post"><input type="submit" name="raz" value="Raz">  </form>

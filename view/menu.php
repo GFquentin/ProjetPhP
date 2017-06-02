@@ -1,3 +1,7 @@
+
+<?php
+include('../controler/controle.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>

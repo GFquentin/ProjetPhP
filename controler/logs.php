@@ -18,20 +18,19 @@ $motdepass = $_POST['motdepass'];
 $motdepass = htmlentities($motdepass);
 //cryptage sha1 du mot de pass
 
-$motdepass = sha1($motdepass);
+#$motdepass = sha1($motdepass);
 
 
 //selection de l'utilisateur et du mdp dans la base
 
-$query = "SELECT login, password FROM login WHERE login = '".$identifiant."'"." AND password ='".$motdepass."'";
+$query = "SELECT login, password FROM user WHERE login = \"$identifiant \" AND password = \"$motdepass\" ";
 $prep = $db->prepare($query);
 $prep->execute();
 $tableaux = $prep->fetchAll();
 
 
-
 //test de résultat utilisateur/Mysql
-if ($identifiant == $tableaux[0] && $motdepass == $tableaux[1]){
+if ($identifiant == $tableaux[0][0] && $motdepass == $tableaux[0][1]){
 $_SESSION['connection']=1;
 $_SESSION['utilisateur']=$tableaux[0];
 header('Location: tableau.php');  

@@ -1,4 +1,6 @@
-
+<?php
+include('../view/menu.php');
+?>
 
 <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"      width="1100px" height="1100px" >
 <?php 
