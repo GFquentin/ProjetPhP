@@ -3,22 +3,23 @@
 class TaskExecution extends Execution
 {
     //<editor-fold desc="Properties">
-    private $taskId;
+    private $task;
     //</editor-fold>
 
     //<editor-fold desc="Constructor">
-    public function __construct($id, $taskId, $starttime, $status)
+    public function __construct($task)
     {
-        $this->id=$id;
-        $this->taskId=$taskId;
-        $this->starttime=$starttime;
-        $this->status=$status;
+        $this->task=$task;
     }
     //</editor-fold>
 
     //<editor-fold desc="Methods">
-    protected function run()
+    public function run()
     {
+        $this->starttime=date('Y-m-d H:i:s');
+        $this->status=$this->task->run();
+
+        return $this->status;
     }
     //</editor-fold>
 
