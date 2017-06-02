@@ -10,6 +10,9 @@
 </head>
 <body>
 
+<?php
+include('../view/menu.html');
+?>
 <div class="container">
   <h2>Les 25 dernieres executions de flow</h2>
   <table class="table">
