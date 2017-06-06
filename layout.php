@@ -15,7 +15,7 @@
 			<div class="form-group col-md-12">
 				<div class="form-control">
 <?php
-					include 'view/login.html';
+					include 'controler/controle.html';
 ?>
 				</div>
 			</div>
