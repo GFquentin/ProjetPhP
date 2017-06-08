@@ -1,5 +1,5 @@
 <?php
-	include('../model/flow.php');
+	include '../model/flow.php';
 	if(!empty($_POST)) {
 		print_r($_POST);
 		$hostList = array();
@@ -18,9 +18,12 @@
 		}
 		$flow["name"] = $_POST["name_task"];
 	}
-	else {
+	/*else {
 		echo "Aucune donnée n'a été indiquée dans le formulaire de création de flow.";
-	}
+	}*/
 	echo '<br>';
 	print_r($flow);
+
+	include '../view/form-flow.php';
+	
 ?>

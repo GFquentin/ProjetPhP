@@ -1,6 +1,6 @@
 
 <?php
-include('../controler/controle.php');
+//include('../controler/controle.php'); //Attention !! Ca créé une boucle x) [Gab]
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,8 +11,8 @@ include('../controler/controle.php');
 
 <div class="topnav">
   <a class="active" href="/ProjetPhP/controler/tableau.php">Home</a>
-  <a href="#news">Create a new flow</a>
-  <a href="#contact">Create a new task</a>
+  <a href="createFlow.php">Create a new flow</a>
+  <a href="createTask.php">Create a new task</a>
   <a href="">Show current flow execusion</a>
   <a href="#about"></a>
 </div>

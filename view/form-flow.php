@@ -1,9 +1,12 @@
 <!--
     Création du formulaire de création du flow
 -->
+<?php
+    include('..layout.php');
+?>
 <div class="row">
     <div class="form-group col-md-12">
-        <form action="http://localhost/ProjetPhP/controler/createFlow.php" method="post">
+        <form action="/ProjetPhP/controler/createFlow.php" method="post">
             <div class="form-group">
                 <label for="name_flow">Nom du flow : </label>
                 <input type="text" class="form-control col-md-5" name="name_task" id="name_task"><BR>
