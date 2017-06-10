@@ -1,9 +1,6 @@
 <!--
     Création du formulaire de création du flow
 -->
-<?php
-    include('..layout.php');
-?>
 <div class="row">
     <div class="form-group col-md-12">
         <form action="/ProjetPhP/controler/createFlow.php" method="post">
@@ -13,39 +10,25 @@
             </div>
             <div class="form-group">
 <?php
-            $dataTask = $_POST['tasks'];
-            $dataTask = array('ssh', 'ls', 'tar', 'rm', 'poweroff', 'reboot');
-                
-?>
-                    <label for="select_task">Sélection de la tâche 1</label>
-                    <select class="form-control col-md-8" name="select_task" id="select_task" type="select">
 
-<?php
-                        foreach ($dataTask as $key => $value) {
+            print_r($nameTask);echo '<br/>';
+            // $dataTask = array('ssh', 'ls', 'tar', 'rm', 'poweroff', 'reboot');
 
-                            echo '<option value="'. $value .'">'. $value .'</option>';
+                for ($i=0; $i < 4; $i++) {              
 
-                        }
-?>
-                    </select>
-            </div>
-            <div class="form-group">
-<?php
-            //$dataTask = $_POST['tasks'];
-            $dataTask = array('ssh', 'ls', 'tar', 'rm', 'poweroff', 'reboot');
-                
-?>
-                    <label for="select_task2">Sélection de la tâche 2</label>
-                    <select class="form-control col-md-8" name="select_task2" id="select_task2" type="select">
+                    echo '<label for="select_task'.$i.'">Sélection de la tâche '.$i.'</label>
+                    <select class="form-control col-md-8" name="select_task'.$i.'" id="select_task'.$i.'" type="select">';
 
-<?php
-                        foreach ($dataTask as $key => $value) {
+// <?php
+                        foreach ($nameTask as $key => $value) {
 
                             echo '<option value="'. $value .'">'. $value .'</option>';
 
                         }
+
+                    echo '</select><br/>';
+                }
 ?>
-                    </select>
             </div>
             <div class="form-group">
 <?php

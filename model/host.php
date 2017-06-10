@@ -38,6 +38,9 @@ class Host
     {
 
     }
+    public function getHost() {
+        
+    }
     //</editor-fold>
 }
 

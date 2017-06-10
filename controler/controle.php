@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION['connection'])){
 	if($_SESSION['connection']==1){
-
+		header('Location: /ProjetPhP/controler/tableau.php');
 	}
 	else{
 		echo "Vous n'avez pas l'autorisation de visualiser cette page.";

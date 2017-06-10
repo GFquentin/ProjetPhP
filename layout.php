@@ -11,8 +11,13 @@
   <body>
 		<div class="container">
 	<?php
-			include 'controler/controle.php';
+      if(!isset($_SESSION['connection'])) {
+        header('Location: /ProjetPhP/controler/logs.php');
+      }
+      else {
+		    include 'controler/controle.php';
+      }
 	?>
-		</div>
+    </div>
 	</body>
 </html>

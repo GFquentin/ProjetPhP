@@ -1,5 +1,9 @@
 <?php
 //demarrage de session
+if($_SERVER['REQUEST_METHOD'] == 'GET') {
+	include '../view/login.php';
+}
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
 session_start();
 //inclusion de la page de connexion mysql
 include '../model/db.php';
@@ -19,7 +23,6 @@ $motdepass = htmlentities($motdepass);
 //cryptage sha1 du mot de pass
 
 #$motdepass = sha1($motdepass);
-
 
 //selection de l'utilisateur et du mdp dans la base
 
@@ -46,7 +49,7 @@ echo "Identifiant ou mot de pass incorrect....";
 $_SESSION['connection']=0;
 header('Location: ../view/login.php'); 
 }
-
+}
 
 
 
