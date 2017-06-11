@@ -38,8 +38,10 @@ class Host
     {
 
     }
-    public function getHost() {
-        
+    public function getHosts() {
+        include '../model/db.php';
+        $rep = $db->query('select * from host')->fetchAll(PDO::FETCH_ASSOC);
+        return $rep;
     }
     //</editor-fold>
 }

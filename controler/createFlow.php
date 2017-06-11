@@ -33,18 +33,35 @@ error_reporting(E_ALL);
 		include '../model/task.php';
 		include '../model/host.php';
 		include '../model/user.php';
+
 		$tasks = new Task($id, $script);
-		$dataTasks = $tasks->getTask(); // Récupération des tâches
-		$nameTask = array();
-		foreach ($dataTasks as $key => $value) {
+		$data_Tasks = $tasks->getTasks(); // Récupération des tâches
+		$dataTasks = array();
+		$tmpTask = array();
+		foreach ($data_Tasks as $key => $value) {
+			if($key == 0) { // Permet de mettre un champs vide lors de la création du flow
+				$tmpTask = array('id' => null, 'script' => null);
+				array_push($dataTasks, $tmpTask);
+			}
 			$tmp = $value['script'];
 			$script = substr(strrchr($tmp, '/'), 1);
-			array_push($nameTask, $script);
+			$tmpTask = array(
+				'id' => $value['id'],
+				'script' => $script
+				);
+			array_push($dataTasks, $tmpTask);
+			
 		}
-		// print_r($nameTask);
+		// print_r($dataTasks);
+		$hosts = new Host($id, $name, $ip);
+		$dataHosts = $hosts->getHosts(); // Récupération de tous les hosts
+		// var_dump($dataHosts);		
+		$users = new User($id, $login, $password);
+		$dataUsers = $users->getUsers(); // Récupération de tous les users
 		include '../view/form-flow.php';
 	}
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+		print_r($_POST);
+		
 	}
 ?>

@@ -46,7 +46,7 @@ class Task
         
     }
 
-    public function getTask()
+    public function getTasks()
     {
         include '../model/db.php';
         $rep = $db->query('select * from task')->fetchAll(PDO::FETCH_ASSOC);

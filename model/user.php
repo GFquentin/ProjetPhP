@@ -38,6 +38,11 @@ class User
     {
 
     }
+    public function getUsers(){
+        include '../model/db.php';
+        $rep = $db->query('select * from user')->fetchAll(PDO::FETCH_ASSOC);
+        return $rep;
+    }
     //</editor-fold>
 }
 
