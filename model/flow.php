@@ -139,6 +139,49 @@ class Flow
     {
         return $this->userlist;
     }
+    public function saveDb() {
+        include '../model/db.php';
+        // Sauvegarde de l'objet flow
+        // $name = $this->name;
+        // $exec_time = $this->exec_time;
+        $sql = ("INSERT INTO flow(name, exec_time) VALUES(:name, :exec_time)");
+        // print_r($_POST);
+        $req = $db->prepare($sql);
+        if($req->execute(array('name' => $_POST['name_flow'],
+        						'exec_time' => $_POST['exec_time']
+        						)
+        				)
+        	) {
+            echo 'Le flow a bien été ajouté à la base de données.';
+        }
+        else {
+            echo 'Une erreur est survenue lors de l\'insertion';
+        }
+        $flow_id = $db->lastInsertId();
+        // Sauvegarde du flowhost
+        $sql = ("INSERT INTO flowhost(flowId, hostId) VALUES(:flowId, :hostId)");
+        $req = $db->prepare($sql);
+        $req->execute(array('flowId' => $flow_id,
+        					'hostId' => $_POST['user_id']
+        					)
+        			);
+        // Sauvegarde du flowuser
+        $sql = ("INSERT INTO flowuser(flowId, userId) VALUES(:flowId, :userId)");
+        $req = $db->prepare($sql);
+        $req->execute(array('flowId' => $flow_id,
+        					'userId' => $_POST['user_id']
+        					)
+        			);
+        // Sauvegarde du taskflow [A améliorer car pas du tout conforme...]
+        $taskId = $_POST['task_1'].'_'.$_POST['task_2'].'_'.$_POST['task_3'].'_'.$_POST['task_4'];
+        $sql = ("INSERT INTO taskflow(taskId, flowId, ordertask) VALUES(:taskId, :flowId, :ordertask)");
+        $req = $db->prepare($sql);
+        $req->execute(array('taskId' => $taskId,
+        					'flowId' => $flow_id,
+        					'ordertask' => $taskId
+        					)
+        			);
+    }
     //</editor-fold>
 }
 ?>

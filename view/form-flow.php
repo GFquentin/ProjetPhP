@@ -6,7 +6,7 @@
         <form action="/ProjetPhP/controler/createFlow.php" method="post">
             <div class="form-group">
                 <label for="name_flow">Nom du flow : </label>
-                <input type="text" class="form-control col-md-5" name="name_task" id="name_task"><BR>
+                <input type="text" class="form-control col-md-5" name="name_flow" id="name_flow"><BR>
             </div>
             <div class="form-group">
 <?php
@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                     <label for="select_hosts">Sélection des hôtes</label>
-                    <select class="form-control col-md-8" name="select_host" id="select_host" type="select">
+                    <select class="form-control col-md-8" name="host_id" id="select_host" type="select">
 <?php
                         foreach ($dataHosts as $key => $value) {
                             echo '<option value="'. $value['id'] .'">'. $value['name'] .'</option>';
@@ -33,7 +33,7 @@
             </div>
             <div class="form-group">
                     <label for="select_users">Sélection des users</label>
-                    <select class="form-control col-md-8" name="select_user" id="select_user" type="select">
+                    <select class="form-control col-md-8" name="user_id" id="select_user" type="select">
 <?php
                         foreach ($dataUsers as $key => $value) {
 
@@ -42,6 +42,10 @@
                         }
 ?>
                     </select>
+            </div>
+            <div class="form-group">
+                <label for="name_flow">Interval d'exécution en seconde : </label>
+                <input type="text" class="form-control col-md-5" name="exec_time" id="exec_time"><BR>
             </div>
             <button type="submit" value="Envoyer" class="form-control btn btn-primary col-md-3">Envoyer</button> <button type="reset" value="Effacer" class="form-control btn btn-warning col-md-3">Effacer</button>
         </form>

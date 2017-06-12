@@ -61,7 +61,12 @@ error_reporting(E_ALL);
 		include '../view/form-flow.php';
 	}
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
-		print_r($_POST);
-		
+		// print_r($_POST);
+		if(isset($_POST)) {
+			include '../model/flow.php';
+			$flow = new Flow($_POST['name_flow'], $_POST['exec_time']);
+			$flow->saveDb();
+			sleep(5);
+		}
 	}
 ?>
